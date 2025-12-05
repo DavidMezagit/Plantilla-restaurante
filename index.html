@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Restaurante | Pedidos Online</title>
+    <meta name="description" content="Burgers, Pizzas, Milanesas y más. Pedí online y recibí en tu casa.">
+    <meta name="keywords" content="hamburguesas, pizzas, milanesas, delivery, pedidos online, restaurante">
+    <meta name="author" content="Restaurante">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Restaurante | Pedidos Online">
+    <meta property="og:description" content="Burgers, Pizzas, Milanesas y más. ¿Qué vas a pedir hoy?">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1974">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Restaurante | Pedidos Online">
+    <meta property="twitter:description" content="Burgers, Pizzas, Milanesas y más. ¿Qué vas a pedir hoy?">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1974">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preconnect para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts con display=swap para mejor rendimiento -->
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Tailwind CSS - Compilado localmente para mejor rendimiento -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-vago-cream dark:bg-vago-dark text-gray-800 dark:text-white font-sans overflow-x-hidden transition-colors duration-300">
+
+    <div id="landing-page" class="fixed inset-0 z-50 bg-white dark:bg-black flex flex-col items-center justify-center transition-colors duration-300">
+        
+        <button onclick="toggleTheme()" 
+                aria-label="Cambiar tema"
+                class="absolute top-6 right-6 z-50 bg-white/20 dark:bg-black/20 backdrop-blur border border-gray-300 dark:border-gray-700 p-3 rounded-full shadow-lg text-vago-pink hover:scale-110 transition focus:outline-none focus:ring-2 focus:ring-vago-pink">
+            <i id="theme-icon-home" class="fas fa-sun" aria-hidden="true"></i>
+        </button>
+
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1974" 
+                     alt="Ambiente del restaurante"
+                 class="w-full h-full object-cover opacity-80 dark:opacity-60 transition-opacity"
+                 loading="eager">
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-white/10 dark:from-vago-dark dark:via-vago-dark/50 dark:to-black/40 transition-colors duration-300"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6">
+            <p class="text-vago-green font-bold tracking-[0.3em] text-sm mb-4 animate-pulse uppercase bg-white/80 dark:bg-black/50 px-4 py-1 rounded-full inline-block backdrop-blur">Bienvenidos</p>
+            
+            <h1 class="font-handwritten text-6xl md:text-8xl text-gray-900 dark:text-white mb-2 drop-shadow-2xl" id="brand-logo">
+                RESTAURANTE
+            </h1>
+            
+            <p class="text-gray-700 dark:text-gray-300 text-lg mb-10 font-medium dark:font-light max-w-md mx-auto">
+                Burgers, Pizzas, Milanesas y más.<br>¿Qué vas a pedir hoy?
+            </p>
+
+            <button onclick="enterApp()" 
+                    aria-label="Ver la carta del menú"
+                    class="btn-neon bg-vago-pink text-white font-black text-xl py-4 px-12 rounded-full uppercase tracking-wider shadow-xl hover:shadow-pink-500/50 focus:outline-none focus:ring-2 focus:ring-vago-pink">
+                VER LA CARTA
+            </button>
+        </div>
+
+        <div class="absolute bottom-8 text-gray-500 text-xs tracking-widest z-10">TU CIUDAD • TU ZONA</div>
+    </div>
+
+
+    <div id="main-app" class="hidden min-h-screen pb-32 fade-in">
+        
+        <nav class="sticky top-0 z-40 bg-white/90 dark:bg-vago-dark/95 backdrop-blur border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
+            <div class="flex justify-between items-center px-4 py-3">
+                <div class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-vago-pink dark:text-gray-400" onclick="goBackHome()">
+                    <i class="fas fa-chevron-left text-xl" aria-hidden="true"></i>
+                    <h2 class="font-handwritten text-2xl text-vago-pink ml-2" id="brand-name-nav">Restaurante</h2>
+                </div>
+                
+                <div class="flex gap-3">
+                    <button onclick="toggleTheme()" 
+                            aria-label="Cambiar tema"
+                            class="w-10 h-10 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition focus:outline-none focus:ring-2 focus:ring-vago-pink">
+                        <i id="theme-icon-app" class="fas fa-sun" aria-hidden="true"></i>
+                    </button>
+                    <button onclick="toggleCart()" 
+                            aria-label="Abrir carrito de compras"
+                            class="relative cursor-pointer group focus:outline-none focus:ring-2 focus:ring-vago-pink rounded-full">
+                        <div id="cart-icon-bg" class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full text-vago-green w-10 h-10 flex items-center justify-center transition-colors">
+                            <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                        </div>
+                        <span id="nav-cart-count" 
+                              class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white transform scale-0 transition-transform"
+                              aria-live="polite"
+                              aria-atomic="true">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex px-4 pb-3 gap-2 md:gap-3 overflow-x-auto no-scrollbar" role="tablist" aria-label="Filtros de categorías">
+                <button onclick="filterMenu('all', event)" 
+                        class="cat-btn bg-vago-pink text-white px-4 md:px-5 py-2 rounded-full font-bold text-xs md:text-sm shadow-md whitespace-nowrap active:scale-95 transition focus:outline-none focus:ring-2 focus:ring-vago-pink"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="menu-container"
+                        aria-label="Ver todos los productos">Todo</button>
+                <button onclick="filterMenu('burgers', event)" 
+                        class="cat-btn bg-white dark:bg-vago-card-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 px-4 md:px-5 py-2 rounded-full font-bold text-xs md:text-sm whitespace-nowrap hover:border-vago-pink hover:text-vago-pink dark:hover:border-vago-pink dark:hover:text-vago-pink transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-vago-pink"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container"
+                        aria-label="Ver hamburguesas">🍔 Burgers</button>
+                <button onclick="filterMenu('pizzas', event)" 
+                        class="cat-btn bg-white dark:bg-vago-card-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 px-4 md:px-5 py-2 rounded-full font-bold text-xs md:text-sm whitespace-nowrap hover:border-vago-green hover:text-vago-green dark:hover:border-vago-green dark:hover:text-vago-green transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-vago-green"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container"
+                        aria-label="Ver pizzas">🍕 Pizzas</button>
+                <button onclick="filterMenu('milas', event)" 
+                        class="cat-btn bg-white dark:bg-vago-card-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 px-4 md:px-5 py-2 rounded-full font-bold text-xs md:text-sm whitespace-nowrap hover:border-vago-pink hover:text-vago-pink dark:hover:border-vago-pink dark:hover:text-vago-pink transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-vago-pink"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container"
+                        aria-label="Ver milanesas">🥩 Milas</button>
+                <button onclick="filterMenu('snacks', event)" 
+                        class="cat-btn bg-white dark:bg-vago-card-dark border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 px-4 md:px-5 py-2 rounded-full font-bold text-xs md:text-sm whitespace-nowrap hover:border-yellow-400 hover:text-yellow-500 dark:hover:border-yellow-400 dark:hover:text-yellow-500 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container"
+                        aria-label="Ver snacks">🍟 Snacks</button>
+            </div>
+        </nav>
+
+        <div class="px-4 py-4 md:py-6 max-w-3xl mx-auto">
+            
+            <!-- Sección Todos -->
+            <div id="section-all" class="menu-section">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <h3 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white italic">TODO</h3>
+                    <div class="h-1 flex-grow bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                </div>
+                <div id="all-grid" class="grid gap-4 md:gap-5 md:grid-cols-2" role="region" aria-label="Todos los productos"></div>
+            </div>
+
+            <!-- Sección Burgers -->
+            <div id="section-burgers" class="menu-section hidden">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <h3 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white italic">BURGERS</h3>
+                    <div class="h-1 flex-grow bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                </div>
+                <div id="burgers-grid" class="grid gap-4 md:gap-5 md:grid-cols-2" role="region" aria-label="Hamburguesas disponibles"></div>
+            </div>
+
+            <!-- Sección Pizzas -->
+            <div id="section-pizzas" class="menu-section hidden">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <h3 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white italic">PIZZAS</h3>
+                    <div class="h-1 flex-grow bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                </div>
+                <div class="bg-green-50 dark:bg-vago-green/10 border border-vago-green/30 rounded-xl p-3 mb-4 md:mb-6 text-center">
+                    <p class="text-vago-green font-bold">🏷️ PRECIO ÚNICO: $15.000</p>
+                </div>
+                <div id="pizzas-grid" class="grid gap-4 md:gap-5 md:grid-cols-2" role="region" aria-label="Pizzas disponibles"></div>
+            </div>
+
+            <!-- Sección Milas -->
+            <div id="section-milas" class="menu-section hidden">
+                <div class="flex items-center gap-3 mb-4 md:mb-6">
+                    <h3 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white italic">MILAS</h3>
+                    <div class="h-1 flex-grow bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                </div>
+                <div id="milas-grid" class="grid gap-4 md:gap-5 md:grid-cols-2" role="region" aria-label="Milanesas disponibles"></div>
+            </div>
+
+            <!-- Sección Snacks -->
+            <div id="section-snacks" class="menu-section hidden">
+                <div class="flex items-center gap-3 mb-3 md:mb-4">
+                    <h3 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white italic">SNACKS</h3>
+                    <div class="h-1 flex-grow bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                </div>
+                <div id="snacks-list" class="space-y-3" role="region" aria-label="Snacks disponibles"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Botón flotante del carrito -->
+    <button id="floating-cart-btn" 
+            onclick="toggleCart()" 
+            aria-label="Ver carrito de compras"
+            class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 bg-vago-pink text-white px-4 md:px-6 py-3 md:py-4 rounded-full shadow-2xl flex items-center gap-2 md:gap-3 cursor-pointer hover:scale-105 transition-transform float-btn-enter border-2 border-white/20 focus:outline-none focus:ring-2 focus:ring-vago-pink">
+        <div class="relative">
+            <i class="fas fa-shopping-bag text-lg md:text-xl" aria-hidden="true"></i>
+            <span id="float-count" 
+                  class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full"
+                  aria-live="polite"
+                  aria-atomic="true">0</span>
+        </div>
+        <div class="flex flex-col leading-none">
+            <span class="text-[9px] md:text-[10px] font-bold text-white/80 uppercase">Ver Pedido</span>
+            <span class="font-black text-base md:text-lg" id="float-total" aria-label="Total del pedido">$0</span>
+        </div>
+        <i class="fas fa-chevron-right ml-1 md:ml-2 text-xs md:text-sm text-white/60" aria-hidden="true"></i>
+    </button>
+
+    <!-- Overlay del carrito -->
+    <div id="cart-overlay" 
+         class="fixed inset-0 bg-black/60 z-[60] backdrop-blur-sm overlay" 
+         onclick="toggleCart()"
+         role="dialog"
+         aria-label="Carrito de compras"
+         aria-modal="true"
+         aria-hidden="true"></div>
+
+    <!-- Sidebar del carrito -->
+    <aside id="cart-sidebar" 
+           class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white dark:bg-vago-dark z-[70] shadow-2xl cart-sidebar flex flex-col"
+           role="complementary"
+           aria-label="Carrito de compras">
+        <div class="p-4 md:p-5 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-white dark:bg-vago-dark z-10">
+            <h2 class="font-black text-lg md:text-xl text-gray-900 dark:text-white">Tu Pedido</h2>
+            <button onclick="toggleCart()" 
+                    aria-label="Cerrar carrito"
+                    class="h-8 w-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-vago-pink">
+                <i class="fas fa-times text-sm md:text-base" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div id="cart-items-list" 
+             class="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3 bg-gray-50 dark:bg-vago-dark"
+             role="region"
+             aria-label="Items del carrito"></div>
+        <div class="p-4 md:p-5 bg-white dark:bg-vago-dark border-t border-gray-100 dark:border-gray-800 z-10 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+            <div class="flex justify-between items-center mb-3 md:mb-4">
+                <span class="text-lg md:text-xl font-black text-gray-900 dark:text-white">Total</span>
+                <span class="text-2xl md:text-3xl font-black text-vago-pink" id="cart-total" aria-label="Total a pagar">$0</span>
+            </div>
+            <button onclick="checkout()" 
+                    aria-label="Realizar pedido por WhatsApp"
+                    class="w-full bg-[#25D366] text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg flex items-center justify-center gap-2 hover:bg-[#20bd5a] shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+                <span class="hidden sm:inline">PEDIR POR </span>WHATSAPP <i class="fab fa-whatsapp text-xl md:text-2xl" aria-hidden="true"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

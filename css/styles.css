@@ -1,0 +1,123 @@
+/* ============================================
+   ESTILOS PERSONALIZADOS - PLANTILLA RESTAURANTE
+   ============================================ */
+
+/* Scrollbar oculto */
+.no-scrollbar::-webkit-scrollbar { 
+    display: none; 
+}
+
+.no-scrollbar { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+/* Animaciones */
+.fade-in { 
+    animation: fadeIn 0.5s ease-out forwards; 
+}
+
+@keyframes fadeIn { 
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+}
+
+.btn-neon { 
+    transition: all 0.3s ease; 
+}
+
+.btn-neon:hover { 
+    transform: scale(1.05); 
+}
+
+/* Transición suave de colores al cambiar tema */
+body, div, nav, button, p, h1, h2, h3, h4 { 
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
+}
+
+/* ============================================
+   CARRITO Y MODALES
+   ============================================ */
+.cart-sidebar { 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    transform: translateX(100%); 
+}
+
+.cart-open { 
+    transform: translateX(0%); 
+}
+
+.overlay { 
+    transition: opacity 0.3s ease; 
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.overlay-visible { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+.float-btn-enter { 
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
+}
+
+@keyframes popIn { 
+    from { 
+        transform: scale(0) translateY(20px); 
+        opacity: 0; 
+    } 
+    to { 
+        transform: scale(1) translateY(0); 
+        opacity: 1; 
+    } 
+}
+
+.pulse-icon { 
+    animation: pulse-pink 2s infinite; 
+}
+
+@keyframes pulse-pink { 
+    0% { 
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); 
+    } 
+    70% { 
+        box-shadow: 0 0 0 10px rgba(255, 105, 180, 0); 
+    } 
+    100% { 
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); 
+    } 
+}
+
+/* ============================================
+   SECCIONES DEL MENÚ
+   ============================================ */
+.menu-section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .menu-section {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+*:focus-visible {
+    outline: 2px solid #FF69B4;
+    outline-offset: 2px;
+}
+
