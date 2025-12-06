@@ -173,28 +173,31 @@ function scrollToSection(id) {
 
 function filterMenu(category, event) {
     try {
+        // Clases de hover que hay que quitar/agregar
+        const hoverClasses = ['hover:border-vago-pink', 'hover:text-vago-pink', 'hover:border-vago-green', 'hover:text-vago-green', 'hover:border-yellow-400', 'hover:text-yellow-500', 'dark:hover:border-vago-pink', 'dark:hover:text-vago-pink', 'dark:hover:border-vago-green', 'dark:hover:text-vago-green', 'dark:hover:border-yellow-400', 'dark:hover:text-yellow-500'];
+        
         // Actualizar estado visual de los botones
         if (event && event.target) {
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-vago-pink', 'text-white', 'shadow-md');
+                btn.classList.remove('bg-vago-pink', 'text-white', 'shadow-md', 'active-btn');
                 btn.classList.add('bg-white', 'dark:bg-vago-card-dark', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-300');
                 btn.setAttribute('aria-selected', 'false');
             });
             
-            event.target.classList.remove('bg-white', 'dark:bg-vago-card-dark', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-300');
-            event.target.classList.add('bg-vago-pink', 'text-white', 'shadow-md');
+            event.target.classList.remove('bg-white', 'dark:bg-vago-card-dark', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-300', ...hoverClasses);
+            event.target.classList.add('bg-vago-pink', 'text-white', 'shadow-md', 'active-btn');
             event.target.setAttribute('aria-selected', 'true');
         } else {
             // Si no hay event (inicialización), activar el botón "Todo"
             const allBtn = document.querySelector('button[onclick*="filterMenu(\'all\'"]');
             if (allBtn) {
                 document.querySelectorAll('.cat-btn').forEach(btn => {
-                    btn.classList.remove('bg-vago-pink', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-vago-pink', 'text-white', 'shadow-md', 'active-btn');
                     btn.classList.add('bg-white', 'dark:bg-vago-card-dark', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-300');
                     btn.setAttribute('aria-selected', 'false');
                 });
-                allBtn.classList.remove('bg-white', 'dark:bg-vago-card-dark', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-300');
-                allBtn.classList.add('bg-vago-pink', 'text-white', 'shadow-md');
+                allBtn.classList.remove('bg-white', 'dark:bg-vago-card-dark', 'border', 'border-gray-200', 'dark:border-gray-700', 'text-gray-600', 'dark:text-gray-300', ...hoverClasses);
+                allBtn.classList.add('bg-vago-pink', 'text-white', 'shadow-md', 'active-btn');
                 allBtn.setAttribute('aria-selected', 'true');
             }
         }

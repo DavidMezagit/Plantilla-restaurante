@@ -114,6 +114,15 @@ body, div, nav, button, p, h1, h2, h3, h4 {
 }
 
 /* ============================================
+   BOTONES DE CATEGORÍA ACTIVOS
+   ============================================ */
+.cat-btn.active-btn:hover {
+    background-color: #FF69B4 !important;
+    color: white !important;
+    border-color: transparent !important;
+}
+
+/* ============================================
    ACCESIBILIDAD
    ============================================ */
 *:focus-visible {
